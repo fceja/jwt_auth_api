@@ -29,7 +29,6 @@ func WriteJSON(w http.ResponseWriter, status int, v any) error {
 func makeHTTPHandleFunc(f apiFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if err := f(w, r); err != nil {
-			// handle error
 			WriteJSON(w, http.StatusBadRequest, APIError{Error: err.Error()})
 		}
 	}
@@ -77,8 +76,6 @@ func (s *APIServer) handleGetAccount(w http.ResponseWriter, r *http.Request) err
 }
 
 func (s *APIServer) handleGetAccountByID(w http.ResponseWriter, r *http.Request) error {
-	// account := NewAccount("F", "Ceja")
-
 	id := mux.Vars(r)["id"]
 
 	fmt.Println(id)
