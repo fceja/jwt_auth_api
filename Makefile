@@ -1,8 +1,8 @@
 build:
-	@go build -o bin/bank
+	@go build -o bin/jwt_auth
 
-run: build 
-	@./bin/bank
+run: build
+	@./bin/jwt_auth
 
 test:
 	@go test -v ./...
